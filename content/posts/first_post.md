@@ -244,12 +244,12 @@ TJull's collection about OSCP like
 |	linux	|	Easy	|	Bratarina
 |	linux	|	Easy	|	Twiggy
 |	linux	|	Easy	|	Pebbles
-|	linux	|	Intermediate	|	XposedAPI
 |	linux	|	Hard	|	CookieCutter
 |	linux	|	Hard	|	Tico
 |	linux	|	Hard	|	Zipper
 |	linux	|	Hard	|	Thor
 |	linux	|	Hard	|	Shifty
+| linux | Intermediate  | XposedAPI
 
 {{< /admonition >}}
 
@@ -283,38 +283,38 @@ TJull's collection about OSCP like
 {{< admonition type=abstract title="windows" open=false >}}
 |Nr.| Type | Difficulty | Name |							
 |-----| ------ | ----------- | ------ |							
-|	1	|	Window	|	Easy	|	legacy
-|	2	|	Window	|	Easy	|	Blue
-|	3	|	Window	|	Easy	|	Devel
-|	4	|	Window	|	Easy	|	Optimum
-|	5	|	Window	|	Easy	|	granny
-|	6	|	Window	|	Easy	|	Arctic
-|	7	|	Window	|	Easy	|	grandpa
-|	8	|	Window	|	Easy	|	bounty
-|	9	|	Window	|	Easy	|	jerry
-|	10	|	Window	|	Easy	|	Forest{AD}
-|	11	|	Window	|	Easy	|	Bastion
-|	12	|	Window	|	Easy	|	Buff
-|	13	|	Window	|	Easy	|	Servmon
-|	14	|	Window	|	Easy	|	Active{AD}
-|	15	|	Window	|	Easy	|	Remote
-|	16	|	Window	|	Easy	|	Omni
+|	1	|	Windows	|	Easy	|	legacy
+|	2	|	Windows	|	Easy	|	Blue
+|	3	|	Windows	|	Easy	|	Devel
+|	4	|	Windows	|	Easy	|	Optimum
+|	5	|	Windows	|	Easy	|	granny
+|	6	|	Windows	|	Easy	|	Arctic
+|	7	|	Windows	|	Easy	|	grandpa
+|	8	|	Windows	|	Easy	|	bounty
+|	9	|	Windows	|	Easy	|	jerry
+|	10	|	Windows	|	Easy	|	Forest{AD}
+|	11	|	Windows	|	Easy	|	Bastion
+|	12	|	Windows	|	Easy	|	Buff
+|	13	|	Windows	|	Easy	|	Servmon
+|	14	|	Windows	|	Easy	|	Active{AD}
+|	15	|	Windows	|	Easy	|	Remote
+|	16	|	Windows	|	Easy	|	Omni
 |	17	|	Windows	|	Easy	|	Love 
-|	18	|	Window	|	Hard	|	conceal
-|	19	|	Windows	|	Hard	|	Object
-|	20	|	Window	|	Medium	|	Bastard
-|	21	|	Window	|	Medium	|	silo
-|	22	|	Window	|	Medium	|	chatterbox
-|	23	|	Window	|	Medium	|	secnotes
-|	24	|	Window	|	Medium	|	Fuse{AD}
-|	25	|	Window	|	Medium	|	Worker 
+|	18	|	Windows	|	Medium	|	Scrambled
+|	19	|	Windows	|	Medium	|	Search
+|	20	|	Windows	|	Medium	|	Bastard
+|	21	|	Windows	|	Medium	|	silo
+|	22	|	Windows	|	Medium	|	chatterbox
+|	23	|	Windows	|	Medium	|	secnotes
+|	24	|	Windows	|	Medium	|	Fuse{AD}
+|	25	|	Windows	|	Medium	|	Worker 
 |	26	|	Windows	|	Medium	|	Support
 |	27	|	Windows	|	Medium	|	Acute
 |	28	|	Windows	|	Medium	|	Timelapse
 |	29	|	Windows	|	Medium	|	StreamIO
-|	30	|	Windows	|	Medium	|	Scrambled
-|	31	|	Windows	|	Medium	|	Search
-|	32	|	Window	|	Insane	|	BankRobber
+|	30	|	Windows	|	Hard	|	conceal
+|	31	|	Windows	|	Hard	|	Object
+|	32	|	Windows	|	Insane	|	BankRobber
 |	33	|	AD	|	Medium	|	Intelligence
 |	34	|	AD	|	Insane	|	APT
 

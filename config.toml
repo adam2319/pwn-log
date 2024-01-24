@@ -14,7 +14,7 @@ languageName = "English"
 hasCJKLanguage = false
 
 # default amount of posts in each pages
-paginate = 12
+paginate = 10
 # google analytics code [UA-XXXXXXXX-X]
 googleAnalytics = "G-NHKXR5ERYW"
 # copyright description used only for seo schema
@@ -32,7 +32,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 # Author config
 [author]
-  name = "g0nd"
+  name = "k4m1"
   email = ""
   link = ""
 
@@ -88,7 +88,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # website title for Open Graph and Twitter Cards
   title = "Pwn Logs"
   # website description for RSS, SEO, Open Graph and Twitter Cards
-  description = "Cyber Roadmap"
+  description = "Logs about my days in the cyber security journey"
   # website images for Open Graph and Twitter Cards
   images = ["/logo.png"]
 
@@ -121,7 +121,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     #  whether to show copyright info
     copyright = true
     #  whether to show the author
-    author = true
+    author = false
     # Site creation time
     since = 2019
     # ICP info only in China (HTML format is supported)
@@ -196,9 +196,10 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # URL of avatar shown in home page
       avatarURL = "/logo.png"
       #  title shown in home page (HTML format is supported)
-      title = "g0nd"
+      title = "k4m1"
       # subtitle shown in home page (HTML format is supported)
-      subtitle = "This is my cyber security journey!"
+      subtitle = ""
+
       # whether to use typeit animation for subtitle
       typeit = true
       # whether to show social links
@@ -209,7 +210,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     [params.home.posts]
       enable = true
       # special amount of posts in each home posts page
-      paginate = 6
+      paginate = 3
       #  replaced with hiddenFromHomePage in params.page
       # default behavior when you don't set "hiddenFromHomePage" in front matter
       defaultHiddenFromHomePage = false
@@ -359,21 +360,21 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     [params.page.share]
       enable = true
       Twitter = true
-      Facebook = true
-      Linkedin = false
+      Facebook = false
+      Linkedin = true
       Whatsapp = false
       Pinterest = false
       Tumblr = false
       HackerNews = true
-      Reddit = false
+      Reddit = true
       VK = false
       Buffer = false
       Xing = false
-      Line = true
+      Line = false
       Instapaper = false
       Pocket = false
       Flipboard = false
-      Weibo = true
+      Weibo = false
       Blogger = false
       Baidu = false
       Odnoklassniki = false
