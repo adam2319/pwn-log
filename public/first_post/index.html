@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Everything what we know about OSCP - Pwn Logs</title><meta name="Description" content="Logs about my days in the cyber security journey"><meta property="og:title" content="Everything what we know about OSCP" />
+<meta property="og:description" content="OSCP About the post There is a brief summary of the OSCP exam. I&rsquo;ve watched several videos about the exam and its preparation, and I&rsquo;ve also read many blog posts. So, I&rsquo;ve collected everything we need to know before attempting the exam. PEN-200
+Thoughts PEN-200 Penetration Testing with Kali Linux is the name of the course while OSCP Offensive Security Certified Professional is the name of the certification.
+Notes Learn how to write notes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://jesszumpepe.github.io/first_post/" /><meta property="og:image" content="http://jesszumpepe.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-19T15:58:26+08:00" />
+<meta property="article:modified_time" content="2023-09-19T15:58:26+08:00" /><meta property="og:site_name" content="Pwn Logs" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://jesszumpepe.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Everything what we know about OSCP"/>
+<meta name="twitter:description" content="OSCP About the post There is a brief summary of the OSCP exam. I&rsquo;ve watched several videos about the exam and its preparation, and I&rsquo;ve also read many blog posts. So, I&rsquo;ve collected everything we need to know before attempting the exam. PEN-200
+Thoughts PEN-200 Penetration Testing with Kali Linux is the name of the course while OSCP Offensive Security Certified Professional is the name of the certification.
+Notes Learn how to write notes."/>
+<meta name="application-name" content="Pwn Logs">
+<meta name="apple-mobile-web-app-title" content="Pwn Logs"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://jesszumpepe.github.io/first_post/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Everything what we know about OSCP",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/jesszumpepe.github.io\/first_post\/"
+        },"genre": "posts","wordcount":  1496 ,
+        "url": "http:\/\/jesszumpepe.github.io\/first_post\/","datePublished": "2023-09-19T15:58:26+08:00","dateModified": "2023-09-19T15:58:26+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "k4m1"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Pwn Logs">Pwn Logs</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/english.html"> About/Cv </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Pwn Logs">Pwn Logs</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/english.html" title="">About/Cv</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Everything what we know about OSCP</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>k4m1</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-09-19">2023-09-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1496 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#about-the-post">About the post</a></li>
+    <li><a href="#thoughts">Thoughts</a>
+      <ul>
+        <li><a href="#notes">Notes</a></li>
+      </ul>
+    </li>
+    <li><a href="#about-the-course">About the Course</a>
+      <ul>
+        <li><a href="#topics">Topics</a></li>
+        <li><a href="#labs">Labs</a></li>
+        <li><a href="#extra-points">Extra points</a></li>
+        <li><a href="#machines">Machines</a></li>
+        <li><a href="#passing-score">Passing score</a></li>
+        <li><a href="#discord">Discord</a></li>
+      </ul>
+    </li>
+    <li><a href="#about-the-exam">About the Exam</a></li>
+    <li><a href="#other-competitors-hints">Other competitors hints</a>
+      <ul>
+        <li><a href="#xannsecurity">xannsecurity</a></li>
+        <li><a href="#strawhat-security">StrawHat Security</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#machines-1">Machines</a>
+      <ul>
+        <li><a href="#offsec-machines">OffSec machines</a>
+          <ul>
+            <li><a href="#practice">Practice</a></li>
+            <li><a href="#play">Play</a></li>
+          </ul>
+        </li>
+        <li><a href="#hack-the-box-machines">Hack The Box machines</a></li>
+        <li><a href="#vulnhub-machines">Vulnhub machines</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="oscp">OSCP</h1>
+<h2 id="about-the-post">About the post</h2>
+<p>There is a brief summary of the OSCP exam. I&rsquo;ve watched several videos about the exam and its preparation, and I&rsquo;ve also read many blog posts. So, I&rsquo;ve collected everything we need to know before attempting the exam.
+<a href="https://www.offsec.com/courses/pen-200/" target="_blank" rel="noopener noreffer ">PEN-200</a></p>
+<h2 id="thoughts">Thoughts</h2>
+<p>PEN-200 Penetration Testing with Kali Linux is the name of the course while OSCP Offensive Security Certified Professional is the name of the certification.</p>
+<h3 id="notes">Notes</h3>
+<p>Learn how to write notes. Try to write up every pwned machine and learned stuff.</p>
+<ul>
+<li>Suggested apps: CherryTree, OneNote</li>
+</ul>
+<h2 id="about-the-course">About the Course</h2>
+<h3 id="topics">Topics</h3>
+<p>There are 24 Topics what you have to complete during the course.</p>
+<table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Penetration Testing with Kali Linux: General Course Information</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Introduction To Cybersecurity</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Effective Learning Strategies</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Report Writing for Penetration Testers</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Information Gathering</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Vulnerability Scanning</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Introduction to Web Application Attacks</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Common Web Application Attacks</td>
+</tr>
+<tr>
+<td>9</td>
+<td>SQL Injection Attacks</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Client-side Attacks</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Locating Public Exploits</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Fixing Exploits</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Antivirus Evasion</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Password Attacks</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Windows Privilege Escalation</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Linux Privilege Escalation</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Port Redirection and SSH Tunneling</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Tunneling Through Deep Packet Inspection</td>
+</tr>
+<tr>
+<td>19</td>
+<td>The Metasploit Framework</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Active Directory Introduction and Enumeration</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Attacking Active Directory Authentication</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Lateral Movement in Active Directory</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Assembling the Pieces</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Trying Harder: The Challenge Labs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="labs">Labs</h3>
+<p>There are six labs:
+(OSCP A-B-C are harder than the real exam)</p>
+<table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Challenge 1 - Medtech</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Challenge 2 - Relia</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Challenge 3 - Skylark</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Challenge 4 - OSCP A</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Challenge 5 - OSCP B</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Challenge 6 - OSCP C</td>
+</tr>
+</tbody>
+</table>
+<p>There are also videos for the courses where they explain what we&rsquo;ve learned in the paper-based materials.</p>
+<p>The videos length: 272h</p>
+<h3 id="extra-points">Extra points</h3>
+<p>You can earn an extra 10% on the exam if you submit correct answers for all the exercises that belong to the topics.</p>
+<h3 id="machines">Machines</h3>
+<p>There are 57 machine what you can pwn during the course</p>
+<h3 id="passing-score">Passing score</h3>
+<p>You have to earn 70 point.
+Scenarios:
+<figure><img src="/images/oscpp.png"/><figcaption>
+            <h4>OSCP Pass Score</h4>
+        </figcaption>
+</figure>
+</p>
+<h3 id="discord">Discord</h3>
+<p>OffSec <a href="https://discord.com/invite/offsec" target="_blank" rel="noopener noreffer ">Discord</a> has a channel where you can ask for help.</p>
+<h2 id="about-the-exam">About the Exam</h2>
+<h2 id="other-competitors-hints">Other competitors hints</h2>
+<h3 id="xannsecurity">xannsecurity</h3>
+<ol>
+<li>month - THM 25 machines (easy+medium+hard), Linux-Windows-AD Privilege Escalation rooms</li>
+<li>month - OSCP training materials, 23 chapters with flags to submit, all excercise</li>
+<li>month - OSCP Labs 50 machines</li>
+</ol>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube-nocookie.com/embed/CmTddSiUGJs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="strawhat-security">StrawHat Security</h3>
+<p>9 month long road to OSCP</p>
+<ul>
+<li>4 month - Try Hack Me,</li>
+<li>2 month - PNPT</li>
+<li>3 month - OSCP</li>
+</ul>
+<p>recommend:
+<a href="https://www.youtube.com/@alh4zr3d3" target="_blank" rel="noopener noreffer ">Alhazard</a> Newbie Tuesdays</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube-nocookie.com/embed/fdIXlgfS7U0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h1 id="recommended-sources">Recommended Sources:</h1>
+<ul>
+<li><a href="https://www.netsecfocus.com/oscp/2021/05/06/The_Journey_to_Try_Harder-_TJnull-s_Preparation_Guide_for_PEN-200_PWK_OSCP_2.0.html" target="_blank" rel="noopener noreffer ">TJnull's preparation guide</a></li>
+</ul>
+<h2 id="machines-1">Machines</h2>
+<p>TJull&rsquo;s collection about OSCP like<br>
+<a href="https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview#" target="_blank" rel="noopener noreffer ">machines</a>. [UPDATED]</p>
+<h3 id="offsec-machines">OffSec machines</h3>
+<h4 id="practice">Practice</h4>
+<div class="details admonition abstract">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>windows<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>windows</td>
+<td>Nickel</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Slort</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Authby</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Jacko</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>MeatHead</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>UT99</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>MedJed</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Algeron</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Billyboss</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Kevin</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Metallus</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Hutch</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Heist</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Vault (Requires some MITM)</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Shenzi</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>DVR4</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Craft</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Hepet</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Squid</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>compromised</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>robust</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>resourced</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Craft2</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<div class="details admonition warning">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>linux<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>linux</td>
+<td>ClamAV</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Wombo</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Payday</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Fail</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Nibbles</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Banzai</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Hunit</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Dibble</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Zino</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Hetemit</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Peppo</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Postfish (Requires some Phishing)</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Malbec</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Sybaris</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Hawat</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>ZenPhoto</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Readys</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Nukem</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Sorcerer</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Walla</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Pelican</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Snookums</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Exfiltrated</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Walla</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Voip</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>ERP</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Depreciated</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Wheels</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<div class="details admonition failure">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-times-circle fa-fw" aria-hidden="true"></i>harder than OSCP<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Difficulty</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N/A</td>
+<td></td>
+<td>Panic</td>
+</tr>
+<tr>
+<td>N/A</td>
+<td></td>
+<td>Clyde</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Easy</td>
+<td>Internal</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Easy</td>
+<td>HelpDesk</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>Hard</td>
+<td>Vector</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Easy</td>
+<td>Bratarina</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Easy</td>
+<td>Twiggy</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Easy</td>
+<td>Pebbles</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Hard</td>
+<td>CookieCutter</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Hard</td>
+<td>Tico</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Hard</td>
+<td>Zipper</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Hard</td>
+<td>Thor</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Hard</td>
+<td>Shifty</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>Intermediate</td>
+<td>XposedAPI</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<h4 id="play">Play</h4>
+<div class="details admonition warning">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>linux<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Difficulty</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Easy</td>
+<td>InfosecPrep</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Easy</td>
+<td>Seppuku</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Easy</td>
+<td>DC-1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Easy</td>
+<td>DC-2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Easy</td>
+<td>FunboxEasy</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Easy</td>
+<td>FunboxEasyEnum</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Easy</td>
+<td>DriftingBlues6</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Intermediate</td>
+<td>SoSimple</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Intermediate</td>
+<td>Stapler</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Intermediate</td>
+<td>Simple</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Intermediate</td>
+<td>Tre</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Intermediate</td>
+<td>SunsetMidnight</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Intermediate</td>
+<td>Assertion101</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<h3 id="hack-the-box-machines">Hack The Box machines</h3>
+<div class="details admonition abstract">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>windows<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Type</th>
+<th>Difficulty</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>legacy</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Devel</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Optimum</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>granny</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Arctic</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>grandpa</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>bounty</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>jerry</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Forest{AD}</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Bastion</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Buff</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Servmon</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Active{AD}</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Remote</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Omni</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Love</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Scrambled</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Search</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Bastard</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>silo</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>chatterbox</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>secnotes</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Fuse{AD}</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Worker</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Support</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Acute</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Timelapse</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>StreamIO</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Windows</td>
+<td>Hard</td>
+<td>conceal</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Windows</td>
+<td>Hard</td>
+<td>Object</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Windows</td>
+<td>Insane</td>
+<td>BankRobber</td>
+</tr>
+<tr>
+<td>33</td>
+<td>AD</td>
+<td>Medium</td>
+<td>Intelligence</td>
+</tr>
+<tr>
+<td>34</td>
+<td>AD</td>
+<td>Insane</td>
+<td>APT</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<div class="details admonition warning">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>linux<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Type</th>
+<th>Difficulty</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Lame</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>shocker</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>bashed</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>nibbles</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>beep</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>sense</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>valentine</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>sunday</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Irked</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Friendzone</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Swagshop</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Networked</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Mirai</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Blocky</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Frolic</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Postman</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Traverxec</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>OpenAdmin</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Admirer</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Blunder</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Tabby</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Doctor</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Luanne</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Delivery</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>ScriptKiddie</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Armageddon</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Knife</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Previse</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Horizontall</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Linux</td>
+<td>Insane</td>
+<td>brainfuck</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>cronos</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>nineveh</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>solidstate</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>node</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>poison</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>tartarsauce</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>jarvis</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Popcorn</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Haircut</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Mango</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Magic</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>SneakyMailer</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Passage</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Time</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Ready</td>
+</tr>
+<tr>
+<td>46</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Ophiuchi</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Pit</td>
+</tr>
+<tr>
+<td>48</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Seal</td>
+</tr>
+<tr>
+<td>49</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Forge</td>
+</tr>
+<tr>
+<td>50</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Shibboleth</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Writer</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Pandora</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Meta</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Paper</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Talkative</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Seventeen</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Backdoor</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<div class="details admonition failure">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-times-circle fa-fw" aria-hidden="true"></i>harder than OSCP<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Type</th>
+<th>Difficulty</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>LaCasaDePapel</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Linux</td>
+<td>Easy</td>
+<td>Safe</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Devops</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Hawk</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Lightweight</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Bitlab</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>October</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Mango</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Book</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Dynstr</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Writer</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Forge</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Linux</td>
+<td>Medium</td>
+<td>Undetected</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Linux</td>
+<td>Hard</td>
+<td>Kotarak</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Linux</td>
+<td>Hard</td>
+<td>falafel</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Linux</td>
+<td>Hard</td>
+<td>Quick</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Linux</td>
+<td>Hard</td>
+<td>Monitors</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Linux</td>
+<td>Hard</td>
+<td>Pikaboo</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Linux</td>
+<td>Insane</td>
+<td>Jail</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Linux</td>
+<td>Insane</td>
+<td>Stacked</td>
+</tr>
+<tr>
+<td>21</td>
+<td>AD</td>
+<td>Easy</td>
+<td>Sauna</td>
+</tr>
+<tr>
+<td>22</td>
+<td>AD</td>
+<td>Medium</td>
+<td>Cascade</td>
+</tr>
+<tr>
+<td>23</td>
+<td>AD</td>
+<td>Medium</td>
+<td>Monteverde</td>
+</tr>
+<tr>
+<td>24</td>
+<td>AD</td>
+<td>Hard</td>
+<td>BlackField</td>
+</tr>
+<tr>
+<td>25</td>
+<td>AD</td>
+<td>Insane</td>
+<td>Sizzle</td>
+</tr>
+<tr>
+<td>26</td>
+<td>AD</td>
+<td>Insane</td>
+<td>PivotAPI</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Netmon</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Windows</td>
+<td>Easy</td>
+<td>Nest</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Jeeves</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Bart</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Sniper</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Querier</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Windows</td>
+<td>Medium</td>
+<td>Atom</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Windows</td>
+<td>Hard</td>
+<td>Tally</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Windows</td>
+<td>Hard</td>
+<td>Control</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Windows</td>
+<td>Hard</td>
+<td>BreadCrumbs</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<h3 id="vulnhub-machines">Vulnhub machines</h3>
+<div class="details admonition warning">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>linux<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>Nr.</th>
+<th>Difficulty</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/djinn-1,397/%20%20" target="_blank" rel="noopener noreffer ">  Djinn 1 </a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/evm-1,391/%20%20" target="_blank" rel="noopener noreffer ">  EVM 1 </a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/derpnstink-1,221/%20" target="_blank" rel="noopener noreffer ">  DerpNStink 1  </a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/rickdiculouslyeasy-1,207/%20" target="_blank" rel="noopener noreffer ">  RickdiculouslyEasy 1  </a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/bob-101,226/%20%20" target="_blank" rel="noopener noreffer ">  Bob 1.0.1 </a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/toppo-1,245/%20%20" target="_blank" rel="noopener noreffer ">  Toppo 1 </a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/lemonsqueezy-1,473/%20" target="_blank" rel="noopener noreffer ">  LemonSqueezy  </a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/glasgow-smile-11,491/%20" target="_blank" rel="noopener noreffer ">  Glasglow 1.1  </a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/hack-me-please-1,731/%20" target="_blank" rel="noopener noreffer ">  Hack Me Please  </a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/dc-6,315/" target="_blank" rel="noopener noreffer ">  Escalate_Linux  </a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/kioptrix-level-11-2,23/" target="_blank" rel="noopener noreffer ">  Kioptrix  Level 1.1 (#2) </a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/kioptrix-level-12-3,24/" target="_blank" rel="noopener noreffer ">  Kioptrix  Level 1.2 (#3) </a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/kioptrix-level-13-4,25" target="_blank" rel="noopener noreffer ">  Kioptrix  Level 1.3 (#4) </a></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/kioptrix-2014-5,62/" target="_blank" rel="noopener noreffer ">  Kioptrix 2014 </a></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/fristileaks-13,133/" target="_blank" rel="noopener noreffer ">  Kioptrix  </a></td>
+</tr>
+<tr>
+<td>16</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/stapler-1,150/" target="_blank" rel="noopener noreffer ">  FristiLeaks 1.3  </a></td>
+</tr>
+<tr>
+<td>17</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/pwnlab-init,158/" target="_blank" rel="noopener noreffer "> Pwnlab: Init  </a></td>
+</tr>
+<tr>
+<td>18</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/tr0ll-2,107/" target="_blank" rel="noopener noreffer ">  Tr0ll 1  </a></td>
+</tr>
+<tr>
+<td>19</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/web-developer-1,288/" target="_blank" rel="noopener noreffer ">  Tr0ll 2  </a></td>
+</tr>
+<tr>
+<td>20</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/escalate_linux-1,323/" target="_blank" rel="noopener noreffer ">  Hackme 1 1 </a></td>
+</tr>
+<tr>
+<td>21</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/dc-6,315/" target="_blank" rel="noopener noreffer ">  DC: 6 </a></td>
+</tr>
+<tr>
+<td>22</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/imf-1,162/" target="_blank" rel="noopener noreffer ">  IMF </a></td>
+</tr>
+<tr>
+<td>23</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/billy-madison-11,161/" target="_blank" rel="noopener noreffer ">  Billy Madison </a></td>
+</tr>
+<tr>
+<td>24</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/tr0ll-1,100/" target="_blank" rel="noopener noreffer ">  Tr0ll1  </a></td>
+</tr>
+<tr>
+<td>25</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/tr0ll-2,107/" target="_blank" rel="noopener noreffer ">  Tr0ll2  </a></td>
+</tr>
+<tr>
+<td>26</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/wallabys-nightmare-v102,176/" target="_blank" rel="noopener noreffer ">  Wallaby&rsquo;s Nightmare </a></td>
+</tr>
+<tr>
+<td>27</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/moria-1,187/" target="_blank" rel="noopener noreffer ">  Moria </a></td>
+</tr>
+<tr>
+<td>28</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/defcon-toronto-galahad,194/" target="_blank" rel="noopener noreffer ">  DEFCON Toronto Galahad  </a></td>
+</tr>
+<tr>
+<td>29</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/tr0ll-3,340/" target="_blank" rel="noopener noreffer ">  Troll 3 </a></td>
+</tr>
+<tr>
+<td>30</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/pinkys-palace-v1,225/" target="_blank" rel="noopener noreffer ">  Pinkys Palace v1  </a></td>
+</tr>
+<tr>
+<td>31</td>
+<td>Beginner</td>
+<td><a href="https://www.vulnhub.com/entry/hacker-kid-101,719/" target="_blank" rel="noopener noreffer ">  Hacker Kid  </a></td>
+</tr>
+<tr>
+<td>32</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/breach-1,152/%20" target="_blank" rel="noopener noreffer ">  Breach 1  </a></td>
+</tr>
+<tr>
+<td>33</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/nullbyte-1,126/%20" target="_blank" rel="noopener noreffer ">  NullByte  </a></td>
+</tr>
+<tr>
+<td>34</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/w34kn3ss-1,270/%20" target="_blank" rel="noopener noreffer ">  W34kn3ss 1  </a></td>
+</tr>
+<tr>
+<td>35</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/goldeneye-1,240/%20%20" target="_blank" rel="noopener noreffer ">  GoldenEye 1 </a></td>
+</tr>
+<tr>
+<td>36</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/healthcare-1,522/%20" target="_blank" rel="noopener noreffer ">  Healthcare 1  </a></td>
+</tr>
+<tr>
+<td>37</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/devguru-1,620/%20%20" target="_blank" rel="noopener noreffer ">  DevGuru 1 </a></td>
+</tr>
+<tr>
+<td>38</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/zico2-1,210/" target="_blank" rel="noopener noreffer ">  Pinkys Palace v2  </a></td>
+</tr>
+<tr>
+<td>39</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/wintermute-1,239/" target="_blank" rel="noopener noreffer ">  Zico2  </a></td>
+</tr>
+<tr>
+<td>40</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/tr0ll-1,100/" target="_blank" rel="noopener noreffer ">  Wintermute  </a></td>
+</tr>
+<tr>
+<td>41</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/spydersec-challenge,128/" target="_blank" rel="noopener noreffer ">  Spydersec </a></td>
+</tr>
+<tr>
+<td>42</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/node-1,252/" target="_blank" rel="noopener noreffer ">  Node 1  </a></td>
+</tr>
+<tr>
+<td>43</td>
+<td>Intermediate</td>
+<td><a href="https://www.vulnhub.com/entry/election-1,503/" target="_blank" rel="noopener noreffer ">  Election 1  </a></td>
+</tr>
+<tr>
+<td>44</td>
+<td>Hard</td>
+<td><a href="https://www.vulnhub.com/entry/pinkys-palace-v4,265/" target="_blank" rel="noopener noreffer ">  Pinkys Palace v4  </a></td>
+</tr>
+<tr>
+<td>45</td>
+<td>Hard</td>
+<td><a href="https://www.vulnhub.com/entry/vulnerable-docker-1,208/" target="_blank" rel="noopener noreffer ">  Vulnerable Docker 1 </a></td>
+</tr>
+<tr>
+<td>46</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/dc-9,412/" target="_blank" rel="noopener noreffer ">  DC 9  </a></td>
+</tr>
+<tr>
+<td>47</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/digitalworldlocal-bravery,281/" target="_blank" rel="noopener noreffer ">  Digitalworld.local (Bravery)  </a></td>
+</tr>
+<tr>
+<td>48</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/digitalworldlocal-development,280/" target="_blank" rel="noopener noreffer ">  Digitalworld.local (Development)  </a></td>
+</tr>
+<tr>
+<td>49</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/digitalworldlocal-mercy-v2,263/%20" target="_blank" rel="noopener noreffer ">  Digitalworld.local (Mercy v2) </a></td>
+</tr>
+<tr>
+<td>50</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/digitalworldlocal-joy,298/" target="_blank" rel="noopener noreffer ">  Digitalworld.local (JOY)  </a></td>
+</tr>
+<tr>
+<td>51</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/digitalworldlocal-fall,726/%20%20%20" target="_blank" rel="noopener noreffer ">  Digitalword.local (FALL)  </a></td>
+</tr>
+<tr>
+<td>52</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/prime-1,358/%20%20" target="_blank" rel="noopener noreffer ">  Prime 1 </a></td>
+</tr>
+<tr>
+<td>53</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/misdirection-1,371/%20" target="_blank" rel="noopener noreffer ">  Misdirection 1  </a></td>
+</tr>
+<tr>
+<td>54</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/sar-1,425/%20%20" target="_blank" rel="noopener noreffer ">  Sar 1 </a></td>
+</tr>
+<tr>
+<td>55</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/tommy-boy-1,157/%20%20" target="_blank" rel="noopener noreffer ">  Tommy Boy 1 </a></td>
+</tr>
+<tr>
+<td>56</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/breach-21,159/%20%20" target="_blank" rel="noopener noreffer ">  Breach 2.1  </a></td>
+</tr>
+<tr>
+<td>57</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/breach-301,177/%20" target="_blank" rel="noopener noreffer ">  Breach 3.0.1  </a></td>
+</tr>
+<tr>
+<td>58</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/infosec-prep-oscp,508/%20%20" target="_blank" rel="noopener noreffer ">  Infosec Prep OSCP Box </a></td>
+</tr>
+<tr>
+<td>59</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/brainpan-1,51/%20%20" target="_blank" rel="noopener noreffer ">  Brainpan 1  </a></td>
+</tr>
+<tr>
+<td>60</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/lord-of-the-root-101,129/%20" target="_blank" rel="noopener noreffer ">  Lord of the root 1.0.1  </a></td>
+</tr>
+<tr>
+<td>61</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/tiki-1,525/%20" target="_blank" rel="noopener noreffer ">  Tiki-1  </a></td>
+</tr>
+<tr>
+<td>62</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/photographer-1,519/%20" target="_blank" rel="noopener noreffer ">  Photographer 1  </a></td>
+</tr>
+<tr>
+<td>63</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/alfa-1,655/%20" target="_blank" rel="noopener noreffer ">  Alpha 1 </a></td>
+</tr>
+<tr>
+<td>64</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/vulnos-2,147/" target="_blank" rel="noopener noreffer ">  Stapler 1  </a></td>
+</tr>
+<tr>
+<td>65</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/sickos-12,144/" target="_blank" rel="noopener noreffer ">  VulnOS 2  Vulnix </a></td>
+</tr>
+<tr>
+<td>66</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/hacklab-vulnix,48/" target="_blank" rel="noopener noreffer ">  SickOs 1.2  scream </a></td>
+</tr>
+<tr>
+<td>67</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/devrandom-scream,47/" target="_blank" rel="noopener noreffer ">  HackLAB  </a></td>
+</tr>
+<tr>
+<td>68</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/pwnos-20-pre-release,34/" target="_blank" rel="noopener noreffer ">  /dev/random  </a></td>
+</tr>
+<tr>
+<td>69</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/skytower-1,96/" target="_blank" rel="noopener noreffer ">  pWnOS 2.0  </a></td>
+</tr>
+<tr>
+<td>70</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/mr-robot-1,151/" target="_blank" rel="noopener noreffer ">  SkyTower 1  </a></td>
+</tr>
+<tr>
+<td>71</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/linsecurity-1,244/" target="_blank" rel="noopener noreffer ">  PwnLab  </a></td>
+</tr>
+<tr>
+<td>72</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/temple-of-doom-1,243/" target="_blank" rel="noopener noreffer ">  Lin.Security  </a></td>
+</tr>
+<tr>
+<td>73</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/pinkys-palace-v2,229/" target="_blank" rel="noopener noreffer ">  Temple of Doom  </a></td>
+</tr>
+<tr>
+<td>74</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/solidstate-1,261/" target="_blank" rel="noopener noreffer ">  Web Developer 1  </a></td>
+</tr>
+<tr>
+<td>75</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/hackme-1,330/" target="_blank" rel="noopener noreffer ">  SolidState  </a></td>
+</tr>
+<tr>
+<td>76</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/tommy-boy-1,157/" target="_blank" rel="noopener noreffer ">  Tommy Boy </a></td>
+</tr>
+<tr>
+<td>77</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/bsides-vancouver-2018-workshop,231/" target="_blank" rel="noopener noreffer ">  BSides Vancouver 2018 </a></td>
+</tr>
+<tr>
+<td>78</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/pinkys-palace-v3,237/" target="_blank" rel="noopener noreffer ">  Pinkys Palace v3  </a></td>
+</tr>
+<tr>
+<td>79</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/readme-1,336/" target="_blank" rel="noopener noreffer ">  Readme 1  </a></td>
+</tr>
+<tr>
+<td>80</td>
+<td>N/A</td>
+<td><a href="https://www.vulnhub.com/entry/oz-1,317/" target="_blank" rel="noopener noreffer ">  OZ  </a></td>
+</tr>
+<tr>
+<td>81</td>
+<td>N/A</td>
+<td><a href="https://github.com/rapid7/metasploitable3/" target="_blank" rel="noopener noreffer ">  Metasploitable 3  </a></td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-09-19</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/first_post/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://jesszumpepe.github.io/first_post/" data-title="Everything what we know about OSCP"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="http://jesszumpepe.github.io/first_post/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://jesszumpepe.github.io/first_post/" data-title="Everything what we know about OSCP"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="http://jesszumpepe.github.io/first_post/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.113.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2024</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

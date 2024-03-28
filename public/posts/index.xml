@@ -1,11 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Pwn Logs</title>
-        <link>http://jesszumpepe.github.io/</link>
-        <description>Logs about my days in the cyber security journey</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 19 Sep 2023 15:58:26 &#43;0800</lastBuildDate>
-            <atom:link href="http://jesszumpepe.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+        <title>All Posts - Pwn Logs</title>
+        <link>http://jesszumpepe.github.io/posts/</link>
+        <description>All Posts | Pwn Logs</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 19 Sep 2023 15:58:26 &#43;0800</lastBuildDate><atom:link href="http://jesszumpepe.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Everything what we know about OSCP</title>
     <link>http://jesszumpepe.github.io/first_post/</link>
     <pubDate>Tue, 19 Sep 2023 15:58:26 &#43;0800</pubDate>
